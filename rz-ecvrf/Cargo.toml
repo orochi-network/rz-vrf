@@ -1,0 +1,16 @@
+[package]
+name = "rz-ecvrf"
+version = "0.1.0"
+edition = "2021"
+description = "Pure Rust primitives for libecvrf."
+license = "Apache-2.0"
+authors = ["Chiro Hiro <chiro@orochi.network>"]
+repository = "https://github.com/orochi-network/tiny-ec"
+keywords = ["crypto", "ECDSA", "ecvrf", "no_std"]
+resolver = "2"
+
+[dependencies]
+tiny-ec = { version = "0.1.3" }
+tiny-keccak = { version = "2.0.2", default-features = false, features = [
+    "keccak",
+] }

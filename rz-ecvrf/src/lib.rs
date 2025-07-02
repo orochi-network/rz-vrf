@@ -1,7 +1,7 @@
 use helper::hash_keccak256;
 use tiny_ec::{
     curve::{Affine, Jacobian, Scalar, AFFINE_G},
-    PublicKey, PublicKeyFormat, ECMULT_CONTEXT,
+    PublicKey, ECMULT_CONTEXT,
 };
 
 /// EC-VRF proof
@@ -35,9 +35,11 @@ impl R0ECVRF {
 
     pub fn deserialize(data: &Vec<u8>) -> Self {
         let mut offset = 0;
-        let public_key: PublicKey =
-            PublicKey::parse_slice(&data[offset..offset + 65], Some(PublicKeyFormat::Full))
-                .expect("Unable to parse public key");
+        let public_key: PublicKey = PublicKey::parse_slice(
+            &data[offset..offset + 65],
+            Some(tiny_ec::PublicKeyFormat::Full),
+        )
+        .expect("Unable to parse public key");
         offset += 65;
         let gamma = Affine::from(&data[offset..offset + 64]);
         offset += 64;

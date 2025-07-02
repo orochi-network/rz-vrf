@@ -64,7 +64,7 @@ fn main() {
     let receipt = prove_info.receipt;
 
     // Result from the guest:
-    let output: bool = receipt.journal.decode().unwrap();
+    let output: u32 = receipt.journal.decode().unwrap();
 
     println!("Proof successful! guest's output: {:?}", output);
 
